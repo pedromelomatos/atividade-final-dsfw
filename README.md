@@ -1,58 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Trilha Livre
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicacao web desenvolvida em Laravel para a atividade final de Desenvolvimento de Software para Web. O sistema permite que usuarios autenticados cadastrem e acompanhem trilhas de estudo com area, nivel, status, carga horaria, progresso, datas e observacoes.
 
-## About Laravel
+## Tema
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Gestor de trilhas de estudo para estudantes. Antes da entrega, confirme o tema com o professor para evitar repeticao com outro aluno da turma.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Funcionalidades
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Autenticacao com cadastro, login e logout.
+- Perfis de acesso `admin` e `student`.
+- Dashboard com resumo de trilhas.
+- CRUD completo de trilhas de estudo.
+- Filtro por status.
+- Regras de acesso: estudantes visualizam apenas suas trilhas; admin visualiza todas.
+- Seeders com usuarios e trilhas iniciais.
+- Testes automatizados de autenticacao, CRUD e autorizacao.
 
-## Learning Laravel
+## Tecnologias
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.4.
+- Laravel 13.
+- Laravel Boost 2.
+- SQLite.
+- Blade.
+- CSS.
+- PHPUnit.
+- Laravel Pint.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalacao
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+1. Instale PHP 8.4 ou superior, Composer e as extensoes comuns do Laravel: `openssl`, `pdo_sqlite`, `sqlite3`, `mbstring`, `fileinfo`, `curl`, `zip` e `intl`.
+2. Clone o repositorio.
+3. Instale as dependencias:
 
-## Agentic Development
+```bash
+composer install
+```
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+4. Crie o arquivo de ambiente:
+
+```bash
+cp .env.example .env
+```
+
+No Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+5. Gere a chave da aplicacao:
+
+```bash
+php artisan key:generate
+```
+
+## Banco de dados
+
+O projeto usa SQLite por padrao. Crie o arquivo do banco se ele ainda nao existir:
+
+```bash
+touch database/database.sqlite
+```
+
+No Windows PowerShell:
+
+```powershell
+New-Item -ItemType File -Force database/database.sqlite
+```
+
+Confira no `.env`:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+```
+
+Execute migrations e seeders:
+
+```bash
+php artisan migrate --seed
+```
+
+Para recriar tudo do zero em desenvolvimento:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+## Executar o projeto
+
+```bash
+php artisan serve
+```
+
+Acesse `http://127.0.0.1:8000`.
+
+## Usuarios de teste
+
+| Perfil | Nome | E-mail | Senha |
+| --- | --- | --- | --- |
+| Admin | Administrador | `admin@trilhalivre.test` | `password` |
+| Estudante | Estudante Teste | `estudante@trilhalivre.test` | `password` |
+| Estudante | Monitor Teste | `monitor@trilhalivre.test` | `password` |
+
+## Laravel Boost
+
+O Boost foi instalado manualmente conforme o enunciado:
 
 ```bash
 composer require laravel/boost --dev
-
 php artisan boost:install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+A configuracao do MCP do Boost esta em `.codex/config.toml`, e as Skills do projeto ficam em `.agents/skills`.
 
-## Contributing
+## Skills criadas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- `identidade-visual`: padroniza paleta, layout, componentes, UX e responsividade.
+- `crud-laravel`: define padrao para CRUDs, requests, controllers, views, validacoes e paginacao.
+- `testes-automatizados`: orienta cobertura de autenticacao, CRUD, permissoes e validacoes.
+- `seguranca`: orienta autenticacao, CSRF, escopo por usuario e protecao de dados.
 
-## Code of Conduct
+## Testes
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Execute:
 
-## Security Vulnerabilities
+```bash
+php artisan test
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Formatacao:
 
-## License
+```bash
+./vendor/bin/pint
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+No Windows PowerShell:
+
+```powershell
+.\vendor\bin\pint.bat
+```
