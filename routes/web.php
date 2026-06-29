@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\StudyTrackController;
+use App\Models\StudyTrack;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +19,22 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('/dashboard', function (Request $request) {
+        $query = StudyTrack::query();
+
+        if (! $request->user()->isAdmin()) {
+            $query->whereBelongsTo($request->user());
+        }
+
+        $tracks = $query->latest()->get();
+
+        return view('dashboard', [
+            'total' => $tracks->count(),
+            'active' => $tracks->where('status', 'active')->count(),
+            'completed' => $tracks->where('status', 'completed')->count(),
+            'latestTracks' => $tracks->take(3),
+        ]);
+    })->name('dashboard');
+    Route::resource('study-tracks', StudyTrackController::class);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

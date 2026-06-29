@@ -13,6 +13,7 @@
         <nav class="nav">
             @auth
                 <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('study-tracks.index') }}">Trilhas</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="link-button" type="submit">Sair</button>

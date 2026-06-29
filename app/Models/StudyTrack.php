@@ -31,6 +31,31 @@ class StudyTrack extends Model
     ];
 
     /**
+     * @return array<string, string>
+     */
+    public static function levels(): array
+    {
+        return [
+            'beginner' => 'Iniciante',
+            'intermediate' => 'Intermediario',
+            'advanced' => 'Avancado',
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function statuses(): array
+    {
+        return [
+            'planned' => 'Planejada',
+            'active' => 'Em andamento',
+            'paused' => 'Pausada',
+            'completed' => 'Concluida',
+        ];
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -48,5 +73,24 @@ class StudyTrack extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function levelLabel(): string
+    {
+        return self::levels()[$this->level] ?? $this->level;
+    }
+
+    public function statusLabel(): string
+    {
+        return self::statuses()[$this->status] ?? $this->status;
+    }
+
+    public function progressPercentage(): int
+    {
+        if ($this->target_hours === 0) {
+            return 0;
+        }
+
+        return min(100, (int) round(($this->completed_hours / $this->target_hours) * 100));
     }
 }
