@@ -6,6 +6,10 @@ Aplicacao web desenvolvida em Laravel para a atividade final de Desenvolvimento 
 
 Gestor de trilhas de estudo para estudantes. Antes da entrega, confirme o tema com o professor para evitar repeticao com outro aluno da turma.
 
+## Aluno
+
+Pedro Henrique Melo Matos (GU3065359)
+
 ## Funcionalidades
 
 - Autenticacao com cadastro, login e logout.
