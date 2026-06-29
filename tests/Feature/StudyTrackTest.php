@@ -105,8 +105,7 @@ class StudyTrackTest extends TestCase
     }
 
     /**
-     * @param array<string, mixed> $overrides
-     *
+     * @param  array<string, mixed>  $overrides
      * @return array<string, mixed>
      */
     private function validTrackData(array $overrides = []): array
