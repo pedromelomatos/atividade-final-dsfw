@@ -1,0 +1,391 @@
+:root {
+    --bg: #f5f7f8;
+    --surface: #ffffff;
+    --text: #1f2933;
+    --muted: #52616b;
+    --primary: #205c49;
+    --secondary: #1f4e5f;
+    --accent: #f4c95d;
+    --border: #d9e2e7;
+    --danger: #b42318;
+    --success: #16703c;
+    --shadow: 0 14px 38px rgba(31, 41, 51, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.topbar {
+    align-items: center;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    min-height: 72px;
+    padding: 0 32px;
+}
+
+.brand {
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.nav,
+.actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav form {
+    margin: 0;
+}
+
+.page {
+    margin: 0 auto;
+    max-width: 1120px;
+    padding: 40px 24px 64px;
+}
+
+.hero,
+.auth-panel,
+.section-heading {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.hero {
+    min-height: 58vh;
+}
+
+.hero h1,
+.section-heading h1,
+.auth-panel h1 {
+    font-size: 2.6rem;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    max-width: 760px;
+}
+
+.hero-copy {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 680px;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.button,
+button.button {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 42px;
+    padding: 9px 16px;
+    text-decoration: none;
+}
+
+.button:hover {
+    text-decoration: none;
+}
+
+.button-small {
+    min-height: 36px;
+    padding: 7px 12px;
+}
+
+.button-secondary {
+    background: var(--surface);
+    color: var(--primary);
+}
+
+.button-danger {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+.link-button {
+    background: transparent;
+    border: 0;
+    color: var(--secondary);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+
+.alert {
+    border-radius: 8px;
+    margin-bottom: 24px;
+    padding: 14px 16px;
+}
+
+.alert-success {
+    background: #e7f6ed;
+    border: 1px solid #b9e5c7;
+    color: var(--success);
+}
+
+.form-card,
+.panel,
+.detail-card,
+.empty-state,
+.track-card,
+.metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.form-card {
+    display: grid;
+    gap: 16px;
+    min-width: min(100%, 520px);
+    padding: 24px;
+}
+
+.form-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font: inherit;
+    min-height: 42px;
+    padding: 10px 12px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.checkbox {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+}
+
+.checkbox input {
+    min-height: auto;
+    width: auto;
+}
+
+.field-error {
+    color: var(--danger);
+    font-size: 0.92rem;
+    margin: 6px 0 0;
+}
+
+.filter-bar {
+    align-items: end;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr minmax(180px, 260px) auto;
+    margin-bottom: 22px;
+}
+
+.track-grid,
+.metric-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.track-card,
+.detail-card,
+.panel,
+.empty-state,
+.metric-card {
+    padding: 22px;
+}
+
+.card-header,
+.list-row {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.track-card h2 {
+    font-size: 1.2rem;
+    margin: 16px 0 6px;
+}
+
+.badge {
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 5px 10px;
+}
+
+.badge-planned {
+    background: #eef2f6;
+    color: #384b5f;
+}
+
+.badge-active {
+    background: #e3f1ff;
+    color: var(--secondary);
+}
+
+.badge-paused {
+    background: #fff3cf;
+    color: #7a4f00;
+}
+
+.badge-completed {
+    background: #e7f6ed;
+    color: var(--success);
+}
+
+.progress {
+    background: #e7edf0;
+    border-radius: 999px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.progress span {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    display: block;
+    height: 100%;
+}
+
+.progress-large {
+    height: 14px;
+    margin: 24px 0;
+}
+
+.details-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 24px 0;
+}
+
+.details-grid div {
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+}
+
+dt,
+.metric-card span {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+dd,
+.metric-card strong {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.notes {
+    white-space: pre-line;
+}
+
+.section-heading-tight {
+    margin-bottom: 16px;
+}
+
+.list-row {
+    border-top: 1px solid var(--border);
+    padding: 14px 0;
+}
+
+.list-row:first-of-type {
+    border-top: 0;
+}
+
+nav[role="navigation"] {
+    margin-top: 24px;
+}
+
+@media (max-width: 800px) {
+    .topbar,
+    .hero,
+    .auth-panel,
+    .section-heading,
+    .card-header,
+    .list-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero h1,
+    .section-heading h1,
+    .auth-panel h1 {
+        font-size: 2rem;
+    }
+
+    .filter-bar,
+    .form-grid,
+    .track-grid,
+    .metric-grid,
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 28px 16px 48px;
+    }
+}
